@@ -12,6 +12,7 @@ import { AppPool } from '@/lib/AppPool';
 import { EventVerifier } from '@/lib/EventVerifier';
 import { NIndexedDB } from '@nostrify/indexeddb';
 import { NostrStorageContext } from '@/contexts/NostrStorageContext';
+import { Nip07AutoLogin } from '@/components/Nip07AutoLogin';
 
 /**
  * IndexedDB database name for the events cache.
@@ -243,6 +244,7 @@ const NostrProvider: React.FC<NostrProviderProps> = (props) => {
   return (
     <NostrContext.Provider value={{ nostr: (appPool.current ?? pool.current) as unknown as NPool }}>
       <NostrStorageContext.Provider value={eventStore.current}>
+        <Nip07AutoLogin />
         {children}
       </NostrStorageContext.Provider>
     </NostrContext.Provider>
