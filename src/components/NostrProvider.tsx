@@ -27,6 +27,7 @@ import {
 } from '@/lib/relayPolicy';
 import { NIndexedDB } from '@nostrify/indexeddb';
 import { NostrStorageContext } from '@/contexts/NostrStorageContext';
+import { Nip07AutoLogin } from '@/components/Nip07AutoLogin';
 
 /**
  * IndexedDB database name for the events cache.
@@ -381,6 +382,7 @@ const NostrProvider: React.FC<NostrProviderProps> = (props) => {
   return (
     <NostrContext.Provider value={nostrContextValue}>
       <NostrStorageContext.Provider value={eventStore.current}>
+        <Nip07AutoLogin />
         {children}
       </NostrStorageContext.Provider>
     </NostrContext.Provider>
